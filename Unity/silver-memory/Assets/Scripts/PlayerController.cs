@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         Moving();
         Firing();
-        Action();
+        Action2();
     }
     private void Moving()
     {
@@ -85,35 +85,44 @@ public class PlayerController : MonoBehaviour
             Destroy(firedProjectile, 10);
         }
     }
-    private void Action()
+    private void Action2()
     {
         if (Input.GetButtonDown("Fire2"))
         {
-            if (!carryingEle && actionCheck != null)
-            {
-                if (actionCheck.tag.StartsWith("Action"))
-                {
-                    gameManager.firstTrigger = true;
-                }
-                if (actionCheck.tag.StartsWith("Projectile"))
-                {
-                    Destroy(actionCheck);
-                }
-                if (actionCheck.tag.StartsWith("Ele"))
-                {
-                    Debug.Log("Grabbing elephant");
-                    actionCheck.transform.parent = this.transform;
-                    actionCheck.transform.position = this.transform.position + this.transform.up;
-                    ptitEle = actionCheck;
-                    this.carryingEle = true; ;
-                }
-            }
-            else if(carryingEle)
+            int layerMask = ~(1<< 9 | 1<<10);
+            if (carryingEle)
             {
                 Debug.Log("Dropping ele");
                 ptitEle.transform.parent = null;
                 ptitEle.transform.position = this.transform.position + this.transform.forward;
                 this.carryingEle = false;
+            }
+            else if (Physics.SphereCast(Camera.main.ScreenPointToRay(Input.mousePosition),2f, out RaycastHit hit, Mathf.Infinity, layerMask, QueryTriggerInteraction.UseGlobal))
+            {
+                Debug.Log(hit.collider.name);
+                GameObject actionCheck = hit.collider.gameObject;
+                if (Vector3.Distance(this.transform.position, actionCheck.transform.position) < 5f)
+                {
+                    if (!carryingEle && actionCheck != null)
+                    {
+                        if (actionCheck.tag.StartsWith("Action"))
+                        {
+                            gameManager.firstTrigger = true;
+                        }
+                        else if (actionCheck.tag.StartsWith("Projectile"))
+                        {
+                            Destroy(actionCheck);
+                        }
+                        else if (actionCheck.tag.StartsWith("Ele"))
+                        {
+                            Debug.Log("Grabbing elephant");
+                            actionCheck.transform.parent = this.transform;
+                            actionCheck.transform.position = this.transform.position + this.transform.up;
+                            ptitEle = actionCheck;
+                            this.carryingEle = true; ;
+                        }
+                    }
+                }
             }
         }
     }
