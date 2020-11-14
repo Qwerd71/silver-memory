@@ -1,7 +1,7 @@
 # silver-memory
-1,2,3
-EGC GameJam
 
-Le nom est magnifique, si vous arrivez à lire ça c'est que vous avez réussi à aller sur Git !
-
-Tutoriel de merge conflicts
+Pour jouer : 
+Flèches ou ZQD : déplacement et saut
+Espace : saut
+Clic Gauche (ou Fire1) : tir de projectile
+Clic Droit (ou Fire2) : action (récupère Ele, actionne l'interrupteur, récupère le projectile du boomerang)

@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Rigidbody rb;
+    /*private Rigidbody rb;
     private bool turning = false;
     void Start()
     {
@@ -24,10 +24,10 @@ public class PlayerControl : MonoBehaviour
             rb.AddForce(this.transform.forward * vertical,ForceMode.Acceleration);
             //rb.MovePosition(this.transform.position + vertical* this.transform.forward);
         }
-        /*if (horizontal != 0 && !turning)
+        if (horizontal != 0 && !turning)
         {
             StartCoroutine(Turn90Degrees(Math.Sign(horizontal)));
-        }*/
+        }
     }
     private IEnumerator Turn90Degrees(int side)
     {
@@ -35,5 +35,5 @@ public class PlayerControl : MonoBehaviour
         rb.rotation = Quaternion.Euler(0, rb.rotation.eulerAngles.y + side * 90, 0);
         yield return new WaitForSeconds(0.5f);
         turning = false;
-    }
+    }*/
 }
