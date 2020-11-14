@@ -53,8 +53,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.LeftShift))
         {
-            speed = 12f;
-            jumpHeight = 3f;
+            //speed = 12f;
+            jumpHeight = 12f;
         }
         else
         {
@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log(hit.collider.name);
                 GameObject actionCheck = hit.collider.gameObject;
-                if (Vector3.Distance(this.transform.position, actionCheck.transform.position) < 5f)
+                if (Vector3.Distance(this.transform.position, actionCheck.transform.position) < 2f)
                 {
                     if (!carryingEle && actionCheck != null)
                     {

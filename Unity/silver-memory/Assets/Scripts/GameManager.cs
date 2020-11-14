@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public bool firstTrigger = false;
-    public GameObject obstacle;
+    public List<GameObject> obstacles;
     // Start is called before the first frame update
 
     // Update is called once per frame
@@ -14,7 +14,10 @@ public class GameManager : MonoBehaviour
         if (firstTrigger)
         {
             Debug.Log("First Trigger activated");
-            obstacle.GetComponent<Collider>().isTrigger ^= true;
+            foreach (GameObject obstacle in obstacles)
+            {
+                obstacle.GetComponent<Collider>().isTrigger ^= true;
+            }
             firstTrigger = false;
         }
     }

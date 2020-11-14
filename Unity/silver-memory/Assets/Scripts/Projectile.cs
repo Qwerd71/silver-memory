@@ -11,11 +11,6 @@ public class Projectile : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
         StartCoroutine(ProjectileReturn());
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public IEnumerator ProjectileReturn()
     {
         yield return new WaitForSeconds(1f);
