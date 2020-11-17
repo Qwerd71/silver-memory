@@ -21,6 +21,12 @@ public class Projectile : MonoBehaviour
         if (other.tag.StartsWith("Player"))
         {
             Debug.Log("Touché");
+            other.GetComponent<PlayerController>().life -= 1;
+        }
+        else if (other.tag.StartsWith("Boss"))
+        {
+            Debug.Log("Touché");
+            other.GetComponent<Boss>().life -= 1;
         }
     }
 }

@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject projectile;
 
-    public GameObject actionCheck;
+    public int life = 10;
 
     // Update is called once per frame
     void Update()
@@ -34,6 +34,11 @@ public class PlayerController : MonoBehaviour
         Moving();
         Firing();
         Action2();
+        CheckPoint();
+        if(life <= 0)
+        {
+            Death();
+        }
     }
     private void Moving()
     {
@@ -50,11 +55,6 @@ public class PlayerController : MonoBehaviour
         {
             speed = 2f;
             jumpHeight = 0.7f;
-        }
-        else if (Input.GetKey(KeyCode.LeftShift))
-        {
-            //speed = 12f;
-            jumpHeight = 12f;
         }
         else
         {
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Dropping ele");
                 ptitEle.transform.parent = null;
-                ptitEle.transform.position = this.transform.position + this.transform.forward;
+                ptitEle.transform.position -= this.transform.up - 1.5f* this.transform.forward;
                 this.carryingEle = false;
             }
             else if (Physics.SphereCast(Camera.main.ScreenPointToRay(Input.mousePosition),2f, out RaycastHit hit, Mathf.Infinity, layerMask, QueryTriggerInteraction.UseGlobal))
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
                     {
                         if (actionCheck.tag.StartsWith("Action"))
                         {
-                            gameManager.firstTrigger = true;
+                            actionCheck.GetComponent<Actionable>().actioned = true;
                         }
                         else if (actionCheck.tag.StartsWith("Projectile"))
                         {
@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
                         {
                             Debug.Log("Grabbing elephant");
                             actionCheck.transform.parent = this.transform;
-                            actionCheck.transform.position = this.transform.position + this.transform.up;
+                            actionCheck.transform.position = this.transform.position + this.transform.up + new Vector3(0,actionCheck.transform.position.y);
                             ptitEle = actionCheck;
                             this.carryingEle = true; ;
                         }
@@ -125,5 +125,17 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+    private void CheckPoint()
+    {
+        if (Input.GetButton("Fire3") && gameManager.lastCheckpoint != null)
+        {
+            this.transform.position = gameManager.lastCheckpoint.position;
+        }
+    }
+    private void Death()
+    {
+        Debug.Log("U R dead");
+        Destroy(this.gameObject);
     }
 }
