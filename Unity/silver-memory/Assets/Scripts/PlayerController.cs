@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         Firing();
         Action2();
         CheckPoint();
-        if(life <= 0)
+        if(life <= 0 || this.transform.position.y < -10)
         {
             Death();
         }
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f;
+            velocity.y = gravity;
         }
         if (carryingEle)
         {
@@ -136,6 +136,6 @@ public class PlayerController : MonoBehaviour
     private void Death()
     {
         Debug.Log("U R dead");
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 }

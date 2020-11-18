@@ -3,7 +3,10 @@ guid: 962d9a5b6a8caf547a5f2ee1072eae43
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - ice: {fileID: 2100000, guid: 0a73ca1f41bbcf449b0a2254b9fb3350, type: 2}
+  - water: {fileID: 2100000, guid: 200072f7097478e48bf54cc3cf6e70aa, type: 2}
+  - liquid: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

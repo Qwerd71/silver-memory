@@ -8,11 +8,11 @@ public class Obstacle : MonoBehaviour
     public Material ice;
     public Material water;
     private Material material; 
-    private Collider liquid;
+    public Collider liquid;
 
     void Start()
     {
-        liquid = GetComponent<Collider>();
+        //liquid = GetComponent<Collider>();
         material = GetComponent<Renderer>().material;
     }
 
