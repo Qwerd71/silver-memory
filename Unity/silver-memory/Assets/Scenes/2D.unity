@@ -396,7 +396,6 @@ MonoBehaviour:
   obstacles:
   - {fileID: 1661635124}
   - {fileID: 1060255681}
-  - {fileID: 0}
   - {fileID: 756690480}
   - {fileID: 769754257}
   - {fileID: 1830885139}
