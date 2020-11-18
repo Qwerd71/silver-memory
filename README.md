@@ -7,5 +7,5 @@
 * Clic Droit (ou Fire2) : action 
   * récupérer Ele
   * actionner l'interrupteur
-  * récupérer le projectile du boomerang
+  * récupérer le boomerang en l'air
 * Clic Milieu ou Shift Droit (Fire3) : checkpoint respawn
