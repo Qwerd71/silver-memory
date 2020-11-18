@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject firedProjectile = Instantiate(projectile, this.transform.position + this.transform.forward, Quaternion.identity);
+            GameObject firedProjectile = Instantiate(projectile, this.transform.position + this.transform.forward + 0.8f *  Vector3.up, Quaternion.identity);
             firedProjectile.GetComponent<Rigidbody>().AddForce(12f * this.transform.forward.normalized, ForceMode.Impulse);
             Destroy(firedProjectile, 10);
         }
