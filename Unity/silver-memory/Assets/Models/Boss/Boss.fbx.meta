@@ -3,7 +3,12 @@ guid: 82d3427dfb7b4d64cb5ec9e25f3a54a5
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EleBoss_SHD
+    second: {fileID: 2100000, guid: c5fb24c3d1083974181c217a65366b60, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

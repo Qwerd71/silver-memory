@@ -3,7 +3,12 @@ guid: af72c7f432432054793723fa89f670ae
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skull_two
+    second: {fileID: 2100000, guid: c8651f6b4e5cdc440ae4599e16defaef, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
