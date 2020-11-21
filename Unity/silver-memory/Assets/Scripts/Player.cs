@@ -98,6 +98,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            animator.SetTrigger("Attack");
             GameObject firedProjectile = Instantiate(projectile, this.transform.position + this.transform.localScale.z / 3*this.transform.forward + 0.8f *  this.transform.localScale.y * Vector3.up, Quaternion.identity);
             firedProjectile.GetComponent<Rigidbody>().AddForce(70f * this.transform.forward.normalized, ForceMode.Impulse);
             Destroy(firedProjectile, 10);
@@ -138,6 +139,7 @@ public class Player : MonoBehaviour
                         }
                         else if (actionCheck.tag.StartsWith("Ele"))
                         {
+                            animator.SetTrigger("Grab");
                             animator.SetBool("Carrying", true);
                             Debug.Log("Grabbing elephant");
                             actionCheck.transform.parent = carryingJoint; //this.transform.position + this.transform.up + new Vector3(0,actionCheck.transform.position.y);
