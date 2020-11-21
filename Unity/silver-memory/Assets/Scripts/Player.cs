@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private GameObject ptitEle;
     private float speed;
     public float normalSpeed;
+    private Animator animator;
 
     Vector3 velocity;
     public float gravity = -9.81f;
@@ -29,6 +30,10 @@ public class Player : MonoBehaviour
     public GameObject projectile;
 
     public int life = 10;
+    private void Start()
+    {
+        animator = this.GetComponentInChildren<Animator>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -67,11 +72,21 @@ public class Player : MonoBehaviour
         if (direction.magnitude >= 0.1f)
         {
             transform.rotation = Quaternion.Euler(0f, direction.x * 90, 0f);
+            animator.SetBool("Moving", true);
             controller.Move(direction * speed * Time.deltaTime);
+        }
+        else
+        {
+            animator.SetBool("Moving",false);
         }
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            animator.SetBool("Jumping", true);
+        }
+        else
+        {
+            animator.SetBool("Jumping", false);
         }
 
         velocity.y += gravity * Time.deltaTime;

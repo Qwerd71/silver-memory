@@ -97,12 +97,15 @@ MonoBehaviour:
   controller: {fileID: 1348005919763265284}
   gameManager: {fileID: 0}
   carryingEle: 0
+  normalSpeed: 0
   gravity: -19.62
+  normalJump: 0
   groundCheck: {fileID: 1348005918478324983}
   groundDistance: 0.1
   groundMask:
     serializedVersion: 2
     m_Bits: 512
+  isGrounded: 0
   projectile: {fileID: 2463962330298342572, guid: 0902f080a4d0cfc408b897dfef5ad156,
     type: 3}
   life: 10
@@ -173,6 +176,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Caspian
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 861f14da1932df7498907f3c9ffdda28,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b0de7cd74d6dc5645acbbb6f2b825d6e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 861f14da1932df7498907f3c9ffdda28, type: 3}
 --- !u!4 &1531132891727955726 stripped
