@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> obstacles;
 
     public Transform lastCheckpoint;
-    public PlayerController player;
+    public Player player;
     // Start is called before the first frame update
 
     // Update is called once per frame

@@ -9,7 +9,7 @@ public class Rocks : MonoBehaviour
         if (other.tag.StartsWith("Player"))
         {
             Debug.Log("Touché");
-            other.GetComponent<PlayerController>().life -= 1;
+            other.GetComponent<Player>().life -= 1;
         }
     }
 }
