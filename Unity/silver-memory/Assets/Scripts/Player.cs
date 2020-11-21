@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public GameManager gameManager;
 
     public bool carryingEle = false;
+    public Transform carryingJoint; 
     private GameObject ptitEle;
     private float speed;
     public float normalSpeed;
@@ -110,6 +111,7 @@ public class Player : MonoBehaviour
             if (carryingEle)
             {
                 Debug.Log("Dropping ele");
+                animator.SetBool("Carrying", false);
                 ptitEle.transform.localPosition = Vector3.forward;
                 ptitEle.transform.parent = null;
                 //ptitEle.transform.position -= ptitEle.transform.up - 1.5f* this.transform.forward;
@@ -133,10 +135,13 @@ public class Player : MonoBehaviour
                         }
                         else if (actionCheck.tag.StartsWith("Ele"))
                         {
+                            animator.SetBool("Carrying", true);
                             Debug.Log("Grabbing elephant");
-                            actionCheck.transform.parent = this.transform; //this.transform.position + this.transform.up + new Vector3(0,actionCheck.transform.position.y);
+                            actionCheck.transform.parent = carryingJoint; //this.transform.position + this.transform.up + new Vector3(0,actionCheck.transform.position.y);
                             ptitEle = actionCheck;
-                            ptitEle.transform.localPosition= Vector3.up;
+                            //ptitEle.transform.localPosition= Vector3.up;
+                            ptitEle.transform.localRotation = Quaternion.identity;
+                            ptitEle.transform.localPosition = Vector3.zero;
                             this.carryingEle = true; ;
                         }
                     }
