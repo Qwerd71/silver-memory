@@ -112,7 +112,10 @@ public class Player : MonoBehaviour
             {
                 Debug.Log("Dropping ele");
                 animator.SetBool("Carrying", false);
+                ptitEle.GetComponent<Rigidbody>().useGravity = true;
+                ptitEle.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
                 ptitEle.transform.localPosition = Vector3.forward;
+                ptitEle.transform.localRotation = Quaternion.identity;
                 ptitEle.transform.parent = null;
                 //ptitEle.transform.position -= ptitEle.transform.up - 1.5f* this.transform.forward;
                 this.carryingEle = false;
@@ -142,7 +145,10 @@ public class Player : MonoBehaviour
                             //ptitEle.transform.localPosition= Vector3.up;
                             ptitEle.transform.localRotation = Quaternion.identity;
                             ptitEle.transform.localPosition = Vector3.zero;
-                            this.carryingEle = true; ;
+                            ptitEle.GetComponent<Rigidbody>().isKinematic = false;
+                            ptitEle.GetComponent<Rigidbody>().useGravity = false;
+                            ptitEle.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                            this.carryingEle = true;
                         }
                     }
                 }
