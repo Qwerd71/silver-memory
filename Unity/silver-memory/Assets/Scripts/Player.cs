@@ -49,7 +49,6 @@ public class Player : MonoBehaviour
         Vector3 direction = new Vector3(horizontal, 0, 0).normalized;
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        Debug.Log(velocity.y);
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = gravity;
@@ -83,8 +82,8 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject firedProjectile = Instantiate(projectile, this.transform.position + this.transform.forward + 0.8f *  Vector3.up, Quaternion.identity);
-            firedProjectile.GetComponent<Rigidbody>().AddForce(12f * this.transform.forward.normalized, ForceMode.Impulse);
+            GameObject firedProjectile = Instantiate(projectile, this.transform.position + this.transform.localScale.z / 3*this.transform.forward + 0.8f *  this.transform.localScale.y * Vector3.up, Quaternion.identity);
+            firedProjectile.GetComponent<Rigidbody>().AddForce(70f * this.transform.forward.normalized, ForceMode.Impulse);
             Destroy(firedProjectile, 10);
         }
     }
@@ -96,15 +95,16 @@ public class Player : MonoBehaviour
             if (carryingEle)
             {
                 Debug.Log("Dropping ele");
+                ptitEle.transform.localPosition = Vector3.forward;
                 ptitEle.transform.parent = null;
-                ptitEle.transform.position -= this.transform.up - 1.5f* this.transform.forward;
+                //ptitEle.transform.position -= ptitEle.transform.up - 1.5f* this.transform.forward;
                 this.carryingEle = false;
             }
-            else if (Physics.SphereCast(Camera.main.ScreenPointToRay(Input.mousePosition),2f, out RaycastHit hit, Mathf.Infinity, layerMask, QueryTriggerInteraction.UseGlobal))
+            else if (Physics.SphereCast(Camera.main.ScreenPointToRay(Input.mousePosition),20f, out RaycastHit hit, Mathf.Infinity, layerMask, QueryTriggerInteraction.UseGlobal))
             {
-                Debug.Log(hit.collider.name);
                 GameObject actionCheck = hit.collider.gameObject;
-                if (Vector3.Distance(this.transform.position, actionCheck.transform.position) < 2f)
+                Debug.Log(hit.collider.name +" "+ Vector3.Distance(this.transform.position, actionCheck.transform.position));
+                if (Vector3.Distance(this.transform.position, actionCheck.transform.position) < 20f)
                 {
                     if (!carryingEle && actionCheck != null)
                     {
@@ -119,9 +119,9 @@ public class Player : MonoBehaviour
                         else if (actionCheck.tag.StartsWith("Ele"))
                         {
                             Debug.Log("Grabbing elephant");
-                            actionCheck.transform.parent = this.transform;
-                            actionCheck.transform.position = this.transform.position + this.transform.up + new Vector3(0,actionCheck.transform.position.y);
+                            actionCheck.transform.parent = this.transform; //this.transform.position + this.transform.up + new Vector3(0,actionCheck.transform.position.y);
                             ptitEle = actionCheck;
+                            ptitEle.transform.localPosition= Vector3.up;
                             this.carryingEle = true; ;
                         }
                     }

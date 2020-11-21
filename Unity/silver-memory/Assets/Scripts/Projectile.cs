@@ -11,6 +11,10 @@ public class Projectile : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
         StartCoroutine(ProjectileReturn());
     }
+    private void Update()
+    {
+        this.transform.Rotate(this.transform.up, 2f);
+    }
     public IEnumerator ProjectileReturn()
     {
         yield return new WaitForSeconds(1f);
