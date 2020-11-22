@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Playerv2: MonoBehaviour
+public class Playerv2 : MonoBehaviour
 {
     // Start is called before the first frame update
 
@@ -57,14 +57,15 @@ public class Playerv2: MonoBehaviour
         }
     }
 
-    private bool IsGrounded() {
-       return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
+    private bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
     }
 
     private void Moving()
     {
         float height = animator.GetFloat("Height");
-        col.center = new Vector3(0, 0.6f * (1f - height) +  height * 1.2f, height * 0.3f);
+        col.center = new Vector3(0, 0.6f * (1f - height) + height * 1.2f, height * 0.3f);
         col.height = 1.3f * (1f - height) + height * 0.8f;
         float horizontal = Input.GetAxisRaw("Horizontal");
         //float vertical = Input.GetAxisRaw("Vertical");
@@ -72,8 +73,8 @@ public class Playerv2: MonoBehaviour
 
         if (carryingEle)
         {
-            speed = normalSpeed / 3;
-            jumpHeight = normalJump / 2;
+            speed = normalSpeed / 1.2f;
+            jumpHeight = normalJump / 1.2f;
         }
         else
         {
@@ -93,7 +94,7 @@ public class Playerv2: MonoBehaviour
                 Debug.Log("Jump");
                 animator.SetTrigger("Jump");
             }
-            if(Mathf.Abs(horizontal) > 0.1f) transform.rotation = Quaternion.Euler(0f, direction.x * 90, 0f);
+            if (Mathf.Abs(horizontal) > 0.1f) transform.rotation = Quaternion.Euler(0f, direction.x * 90, 0f);
         }
         else
         {
@@ -103,7 +104,7 @@ public class Playerv2: MonoBehaviour
 
     private void Firing()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (!this.carryingEle && Input.GetButtonDown("Fire1"))
         {
             animator.SetTrigger("Attack");
         }
@@ -111,7 +112,6 @@ public class Playerv2: MonoBehaviour
 
     private void Action2()
     {
-        Debug.Log("Action2");
         if (Input.GetButtonDown("Fire2"))
         {
             Debug.Log("Fire2");
@@ -188,5 +188,13 @@ public class Playerv2: MonoBehaviour
         GameObject firedProjectile = Instantiate(projectile, this.transform.position + this.transform.localScale.z / 3 * this.transform.forward + 0.8f * this.transform.localScale.y * Vector3.up, Quaternion.identity);
         firedProjectile.GetComponent<Rigidbody>().AddForce(70f * this.transform.forward.normalized, ForceMode.Impulse);
         Destroy(firedProjectile, 10);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ele")
+        {
+            Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), col);
+        }
     }
 }
