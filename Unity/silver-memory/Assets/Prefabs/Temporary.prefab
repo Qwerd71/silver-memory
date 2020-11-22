@@ -125,6 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ed0363a897e4640bb8a03041738a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerFade: 2
+  timerAppear: 5
 --- !u!65 &2126351166360198439
 BoxCollider:
   m_ObjectHideFlags: 0
