@@ -7,21 +7,27 @@ public class GameManager : MonoBehaviour
     public Actionable firstTrigger;
     public List<GameObject> obstacles;
 
-    public Transform lastCheckpoint;
+    public GameObject currentCheckpoint;
+    public GameObject lastCheckpoint;
+
     public Player player;
+    public Boss boss;
 
     public AudioSource audioSource;
     public AudioClip bossSound;
-    // Start is called before the first frame update
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (firstTrigger.actioned)
+        if(lastCheckpoint != currentCheckpoint)
         {
-            firstTrigger.actioned = false;
-            StartCoroutine(LiquidWater());
+            if(lastCheckpoint != null)
+                GlowingSkull(lastCheckpoint, Color.white);
+            lastCheckpoint = currentCheckpoint;
+            GlowingSkull(currentCheckpoint, Color.green);
         }
+    }
+    private void GlowingSkull(GameObject skull,Color color)
+    {
+        skull.GetComponent<Renderer>().material.color = color;
     }
     private IEnumerator LiquidWater()
     {
@@ -43,5 +49,9 @@ public class GameManager : MonoBehaviour
         audioSource.Stop();
         audioSource.clip = bossSound;
         audioSource.Play();
+    }
+    public void PlayerDeath()
+    {
+        boss.life = boss.baseLife;
     }
 }

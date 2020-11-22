@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 43425081}
   - component: {fileID: 43425080}
   - component: {fileID: 43425082}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SkullCheckpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
