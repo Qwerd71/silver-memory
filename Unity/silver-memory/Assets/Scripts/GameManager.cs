@@ -8,7 +8,10 @@ public class GameManager : MonoBehaviour
     public List<GameObject> obstacles;
 
     public Transform lastCheckpoint;
-    public PlayerController player;
+    public Player player;
+
+    public AudioSource audioSource;
+    public AudioClip bossSound;
     // Start is called before the first frame update
 
     // Update is called once per frame
@@ -34,5 +37,11 @@ public class GameManager : MonoBehaviour
             obstacle.GetComponent<Collider>().isTrigger ^= true;
         }
         firstTrigger.gameObject.SetActive(true);
+    }
+    public void BossScene()
+    {
+        audioSource.Stop();
+        audioSource.clip = bossSound;
+        audioSource.Play();
     }
 }

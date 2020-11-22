@@ -11,6 +11,10 @@ public class Projectile : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
         StartCoroutine(ProjectileReturn());
     }
+    private void Update()
+    {
+        this.transform.Rotate(this.transform.up, 2f);
+    }
     public IEnumerator ProjectileReturn()
     {
         yield return new WaitForSeconds(1f);
@@ -21,7 +25,7 @@ public class Projectile : MonoBehaviour
         if (other.tag.StartsWith("Player"))
         {
             Debug.Log("Touché");
-            other.GetComponent<PlayerController>().life -= 1;
+            other.GetComponent<Player>().life -= 1;
         }
         else if (other.tag.StartsWith("Boss"))
         {

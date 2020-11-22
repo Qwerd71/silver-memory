@@ -43,7 +43,7 @@ public class Spikes : MonoBehaviour
     {
         if (other.gameObject.tag.StartsWith("Player"))
         {
-            other.gameObject.GetComponent<PlayerController>().life -= 1;
+            other.gameObject.GetComponent<Player>().life -= 1;
         }
     }
 }

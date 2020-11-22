@@ -8,6 +8,9 @@ public class Temporary : MonoBehaviour
     private bool coroutineStarted = false;
     private Collider collisioner;
 
+    public float timerFade;
+    public float timerAppear;
+
     private void Start()
     {
         collisioner = this.GetComponents<Collider>()[0];
@@ -17,8 +20,7 @@ public class Temporary : MonoBehaviour
     {
         if (collisioner.isTrigger && !coroutineStarted)
         {
-            Debug.Log("Unfading");
-            StartCoroutine(Fade(false,5f));
+            StartCoroutine(Fade(false,timerAppear));
         }
     }
     private IEnumerator Fade(bool state,float timer)
@@ -32,7 +34,7 @@ public class Temporary : MonoBehaviour
     {
         if (other.gameObject.tag.StartsWith("Player") && !coroutineStarted && !collisioner.isTrigger)
         {
-            StartCoroutine(Fade(true,2f));
+            StartCoroutine(Fade(true,timerFade));
         }
     }
 }

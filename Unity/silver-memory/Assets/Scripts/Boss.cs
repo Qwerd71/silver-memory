@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Boss : MonoBehaviour
@@ -8,18 +9,33 @@ public class Boss : MonoBehaviour
     public GameManager gameManager;
     private bool activated = false;
     public int life = 20;
+    private Animator animator;
+
+    public float attackTimer;
 
     public GameObject rock;
     private bool coroutineStarted = false;
+    private void Start()
+    {
+        animator = this.GetComponent<Animator>();
+    }
 
     // Update is called once per frame
     void Update()
     {
         // Surement bouger cette condition dans gameManager, sinon le boss sera tout le temps affiché
-        if(Vector3.Distance(this.transform.position,gameManager.player.gameObject.transform.position) < 10f && ! gameManager.player.carryingEle && !activated)
+        if(Vector3.Distance(this.transform.position,gameManager.player.gameObject.transform.position) < 50f && !activated)
         {
-            Debug.Log("Vous êtes arrivé au boss, il s'active");
-            activated = true;
+            if (!gameManager.player.carryingEle)
+            {
+                Debug.Log("Vous êtes arrivé au boss, il s'active");
+                activated = true;
+                gameManager.BossScene();
+            }
+            else
+            {
+                SceneManager.LoadScene(2);
+            }
         }
         if(activated && life > 0 && !coroutineStarted)
         {
@@ -27,7 +43,7 @@ public class Boss : MonoBehaviour
             int random = Random.Range(0, 3);
             if (0 == random)
             {
-                Debug.Log("attack 0");
+                //Debug.Log("attack 0");
                 coroutineStarted = false;
             }
             else if(random == 1)
@@ -41,24 +57,31 @@ public class Boss : MonoBehaviour
         }
         else if (life <= 0)
         {
-            Destroy(this.gameObject);
+            SceneManager.LoadScene(3);
         }
     }
     private IEnumerator AttackMove1()
     {
-        GameObject falling = Instantiate(rock, new Vector3(gameManager.player.transform.position.x, 10, 0),Quaternion.identity);
-        Destroy(falling, 5f);
-        yield return new WaitForSeconds(0.5f);
+        animator.SetTrigger("Attack1");
+        //Debug.Log("1");
+        for (int i = -2; i<3; i ++)
+        {
+            GameObject falling = Instantiate(rock, new Vector3(gameManager.player.transform.position.x + i, this.transform.position.y + 3 * this.transform.localScale.y, gameManager.player.transform.position.z), Quaternion.identity);
+            Destroy(falling, 5f);
+        }
+        yield return new WaitForSeconds(attackTimer);
         coroutineStarted = false;
     }
     private IEnumerator AttackMove2()
     {
-        GameObject rising = Instantiate(rock, new Vector3(gameManager.player.transform.position.x, -10, 0), Quaternion.identity);
+        animator.SetTrigger("Attack2");
+        //Debug.Log("2");
+        GameObject rising = Instantiate(rock, new Vector3(gameManager.player.transform.position.x, this.transform.position.y  - 3* this.transform.localScale.y, gameManager.player.transform.position.z), Quaternion.identity);
         Rigidbody rb = rising.GetComponent<Rigidbody>();
         rb.useGravity = false;
-        rb.AddForce(9.81f * Vector3.up, ForceMode.Impulse);
-        Destroy(rising, 5f);
-        yield return new WaitForSeconds(0.5f);
+        rb.AddForce(9.81f *4 * Vector3.up, ForceMode.Impulse);
+        Destroy(rising, 15f);
+        yield return new WaitForSeconds(attackTimer);
         coroutineStarted = false;
     }
 }
