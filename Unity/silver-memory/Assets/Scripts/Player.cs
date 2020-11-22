@@ -42,16 +42,18 @@ public class Player : MonoBehaviour
         Firing();
         Action2();
 
-        if ((Input.GetButton("Fire3") && gameManager.lastCheckpoint != null) || life <= 0)
+        
+    }
+    private void FixedUpdate()
+    {
+        if ((Input.GetButton("Fire3") || life <= 0) && gameManager.currentCheckpoint != null)
         {
             Death();
         }
-    }
-    private void LateUpdate()
-    {
         if (life <= 0)
         {
             life = 1;
+            gameManager.PlayerDeath();
         }
     }
     private void Moving()
@@ -61,10 +63,6 @@ public class Player : MonoBehaviour
         Vector3 direction = new Vector3(horizontal, 0, 0).normalized;
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = gravity;
-        }
         if (carryingEle)
         {
             speed = normalSpeed / 3;
@@ -89,6 +87,7 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+
             animator.SetBool("Jumping", true);
         }
         else
@@ -105,7 +104,7 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             animator.SetTrigger("Attack");
-            GameObject firedProjectile = Instantiate(projectile, this.transform.position + this.transform.localScale.z / 3 * this.transform.forward + 0.8f * this.transform.localScale.y * Vector3.up, Quaternion.identity);
+            GameObject firedProjectile = Instantiate(projectile, this.transform.position + (this.transform.localScale.z / 2 * this.transform.forward) + (0.8f * this.transform.localScale.y * Vector3.up), Quaternion.identity);
             firedProjectile.GetComponent<Rigidbody>().AddForce(70f * this.transform.forward.normalized, ForceMode.Impulse);
             Destroy(firedProjectile, 10);
         }
@@ -165,8 +164,6 @@ public class Player : MonoBehaviour
     }
     private void Death()
     {
-        this.transform.position = new Vector3(gameManager.lastCheckpoint.position.x, gameManager.lastCheckpoint.position.y, this.transform.position.z); ;
-
-        //this.life = 1;
+        this.transform.position = new Vector3(gameManager.currentCheckpoint.transform.position.x, gameManager.currentCheckpoint.transform.position.y, this.transform.position.z); ;
     }
 }

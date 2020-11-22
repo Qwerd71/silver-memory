@@ -9,7 +9,8 @@ public class Checkpoint : MonoBehaviour
     {
         if (other.tag.StartsWith("Player"))
         {
-            gameManager.lastCheckpoint = this.transform;
+            gameManager.lastCheckpoint = gameManager.currentCheckpoint;
+            gameManager.currentCheckpoint = this.gameObject;
         }
     }
 }
