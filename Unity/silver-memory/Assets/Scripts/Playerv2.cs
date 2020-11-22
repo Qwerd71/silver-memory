@@ -27,11 +27,13 @@ public class Playerv2: MonoBehaviour
     public int life = 10;
     private float distToGround;
     private CapsuleCollider col;
+    private CapsuleCollider initCol;
     private void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
+        initCol = col;
         distToGround = col.bounds.extents.y;
     }
 
@@ -61,6 +63,9 @@ public class Playerv2: MonoBehaviour
 
     private void Moving()
     {
+        float height = animator.GetFloat("Height");
+        col.center = new Vector3(0, 0.6f * (1f - height) +  height * 1.2f, height * 0.3f);
+        col.height = 1.3f * (1f - height) + height * 0.8f;
         float horizontal = Input.GetAxisRaw("Horizontal");
         //float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0, 0).normalized;
@@ -148,7 +153,7 @@ public class Playerv2: MonoBehaviour
 
     private void Death()
     {
-        this.transform.position = new Vector3(gameManager.lastCheckpoint.position.x, gameManager.lastCheckpoint.position.y, this.transform.position.z); ;
+        this.transform.position = new Vector3(gameManager.currentCheckpoint.transform.position.x, gameManager.currentCheckpoint.transform.position.y, this.transform.position.z);
 
         //this.life = 1;
     }

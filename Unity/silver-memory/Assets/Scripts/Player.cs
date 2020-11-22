@@ -153,7 +153,7 @@ public class Player : MonoBehaviour
     }
     private void Death()
     {
-        this.transform.position = new Vector3(gameManager.currentCheckpoint.transform.position.x, gameManager.currentCheckpoint.transform.position.y, this.transform.position.z); ;
+        this.transform.position = new Vector3(gameManager.currentCheckpoint.transform.position.x, gameManager.currentCheckpoint.transform.position.y, this.transform.position.z);
     }
 
     public void SnapEle()
