@@ -118,12 +118,9 @@ public class Player : MonoBehaviour
             if (carryingEle)
             {
                 Debug.Log("Dropping ele");
-                animator.SetBool("Carrying", false);
-                ptitEle.GetComponent<Rigidbody>().useGravity = true;
-                ptitEle.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                ptitEle.transform.localPosition = Vector3.forward - Vector3.right;
-                ptitEle.transform.parent = null;
-                //ptitEle.transform.localRotation = Quaternion.identity;
+                animator.SetTrigger("Grab");
+                
+               
                 //ptitEle.transform.position -= ptitEle.transform.up - 1.5f* this.transform.forward;
                 this.carryingEle = false;
             }
@@ -146,16 +143,8 @@ public class Player : MonoBehaviour
                         else if (actionCheck.tag.StartsWith("Ele"))
                         {
                             animator.SetTrigger("Grab");
-                            animator.SetBool("Carrying", true);
                             Debug.Log("Grabbing elephant");
-                            actionCheck.transform.parent = carryingJoint; //this.transform.position + this.transform.up + new Vector3(0,actionCheck.transform.position.y);
                             ptitEle = actionCheck;
-                            //ptitEle.transform.localPosition= Vector3.up;
-                            ptitEle.transform.localRotation = Quaternion.identity;
-                            ptitEle.transform.localPosition = Vector3.zero;
-                            ptitEle.GetComponent<Rigidbody>().isKinematic = false;
-                            ptitEle.GetComponent<Rigidbody>().useGravity = false;
-                            ptitEle.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                             this.carryingEle = true;
                         }
                     }
@@ -168,5 +157,27 @@ public class Player : MonoBehaviour
         this.transform.position = new Vector3(gameManager.lastCheckpoint.position.x, gameManager.lastCheckpoint.position.y, this.transform.position.z); ;
 
         //this.life = 1;
+    }
+
+    public void SnapEle()
+    {
+        if (this.carryingEle)
+        {
+            ptitEle.transform.parent = carryingJoint;
+            animator.SetBool("Carrying", true);
+            ptitEle.transform.localRotation = Quaternion.identity;
+            ptitEle.transform.localPosition = Vector3.zero;
+            ptitEle.GetComponent<Rigidbody>().isKinematic = false;
+            ptitEle.GetComponent<Rigidbody>().useGravity = false;
+            ptitEle.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        }
+        else
+        {
+            animator.SetBool("Carrying", false);
+            ptitEle.transform.parent = null;
+            ptitEle.transform.localRotation = Quaternion.LookRotation(Vector3.right, Vector3.up);
+            ptitEle.GetComponent<Rigidbody>().useGravity = true;
+            ptitEle.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        }
     }
 }
