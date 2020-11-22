@@ -8,6 +8,7 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     public GameManager gameManager;
     private bool activated = false;
+    public int baseLife = 20;
     public int life = 20;
     private Animator animator;
 
@@ -18,17 +19,19 @@ public class Boss : MonoBehaviour
     private void Start()
     {
         animator = this.GetComponent<Animator>();
+        life = baseLife;
     }
 
     // Update is called once per frame
     void Update()
     {
         // Surement bouger cette condition dans gameManager, sinon le boss sera tout le temps affiché
-        if(Vector3.Distance(this.transform.position,gameManager.player.gameObject.transform.position) < 50f && !activated)
+        if(Vector3.Distance(this.transform.position,gameManager.player.gameObject.transform.position) < 100f && !activated)
         {
             if (!gameManager.player.carryingEle)
             {
                 Debug.Log("Vous êtes arrivé au boss, il s'active");
+                this.transform.position += new Vector3(-70, 0);
                 activated = true;
                 gameManager.BossScene();
             }
@@ -66,8 +69,8 @@ public class Boss : MonoBehaviour
         //Debug.Log("1");
         for (int i = -2; i<3; i ++)
         {
-            GameObject falling = Instantiate(rock, new Vector3(gameManager.player.transform.position.x + i, this.transform.position.y + 3 * this.transform.localScale.y, gameManager.player.transform.position.z), Quaternion.identity);
-            Destroy(falling, 5f);
+            GameObject falling = Instantiate(rock, new Vector3(gameManager.player.transform.position.x + 7*i, this.transform.position.y + 7 * this.transform.localScale.y + Random.Range(-2,15), gameManager.player.transform.position.z), Quaternion.identity);
+            Destroy(falling, 15f);
         }
         yield return new WaitForSeconds(attackTimer);
         coroutineStarted = false;
@@ -75,12 +78,14 @@ public class Boss : MonoBehaviour
     private IEnumerator AttackMove2()
     {
         animator.SetTrigger("Attack2");
-        //Debug.Log("2");
-        GameObject rising = Instantiate(rock, new Vector3(gameManager.player.transform.position.x, this.transform.position.y  - 3* this.transform.localScale.y, gameManager.player.transform.position.z), Quaternion.identity);
-        Rigidbody rb = rising.GetComponent<Rigidbody>();
-        rb.useGravity = false;
-        rb.AddForce(9.81f *4 * Vector3.up, ForceMode.Impulse);
-        Destroy(rising, 15f);
+        for (int i = -2; i < 3; i++)
+        {
+            GameObject rising = Instantiate(rock, new Vector3(gameManager.player.transform.position.x + 7 *i, this.transform.position.y - 2 * this.transform.localScale.y - Random.Range(-2, 15), gameManager.player.transform.position.z), Quaternion.identity);
+            Rigidbody rb = rising.GetComponent<Rigidbody>();
+            rb.useGravity = false;
+            rb.AddForce(9.81f * 4 * Vector3.up, ForceMode.Impulse);
+            Destroy(rising, 15f);
+        }
         yield return new WaitForSeconds(attackTimer);
         coroutineStarted = false;
     }
