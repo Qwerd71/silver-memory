@@ -38,7 +38,7 @@ AvatarMask:
   - m_Path: Group/Main/DeformationSystem
     m_Weight: 0
   - m_Path: Group/Main/DeformationSystem/Root_M
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Group/Main/DeformationSystem/Root_M/Hip_R
     m_Weight: 0
   - m_Path: Group/Main/DeformationSystem/Root_M/Hip_R/Knee_R
