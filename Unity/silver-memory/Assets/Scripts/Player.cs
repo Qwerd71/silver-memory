@@ -114,9 +114,9 @@ public class Player : MonoBehaviour
                 animator.SetBool("Carrying", false);
                 ptitEle.GetComponent<Rigidbody>().useGravity = true;
                 ptitEle.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                ptitEle.transform.localPosition = Vector3.forward;
-                ptitEle.transform.localRotation = Quaternion.identity;
+                ptitEle.transform.localPosition = Vector3.forward - Vector3.right ;
                 ptitEle.transform.parent = null;
+                //ptitEle.transform.localRotation = Quaternion.identity;
                 //ptitEle.transform.position -= ptitEle.transform.up - 1.5f* this.transform.forward;
                 this.carryingEle = false;
             }
