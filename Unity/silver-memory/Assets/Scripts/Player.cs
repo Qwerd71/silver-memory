@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public GameManager gameManager;
 
     public bool carryingEle = false;
-    public Transform carryingJoint; 
+    public Transform carryingJoint;
     private GameObject ptitEle;
     private float speed;
     public float normalSpeed;
@@ -41,10 +41,17 @@ public class Player : MonoBehaviour
         Moving();
         Firing();
         Action2();
-        CheckPoint();
-        if(life <= 0)
+
+        if ((Input.GetButton("Fire3") && gameManager.lastCheckpoint != null) || life <= 0)
         {
             Death();
+        }
+    }
+    private void LateUpdate()
+    {
+        if (life <= 0)
+        {
+            life = 1;
         }
     }
     private void Moving()
@@ -60,8 +67,8 @@ public class Player : MonoBehaviour
         }
         if (carryingEle)
         {
-            speed = normalSpeed /3;
-            jumpHeight = normalJump /2;
+            speed = normalSpeed / 3;
+            jumpHeight = normalJump / 2;
         }
         else
         {
@@ -77,7 +84,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            animator.SetBool("Moving",false);
+            animator.SetBool("Moving", false);
         }
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -98,7 +105,7 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             animator.SetTrigger("Attack");
-            GameObject firedProjectile = Instantiate(projectile, this.transform.position + this.transform.localScale.z / 3*this.transform.forward + 0.8f *  this.transform.localScale.y * Vector3.up, Quaternion.identity);
+            GameObject firedProjectile = Instantiate(projectile, this.transform.position + this.transform.localScale.z / 3 * this.transform.forward + 0.8f * this.transform.localScale.y * Vector3.up, Quaternion.identity);
             firedProjectile.GetComponent<Rigidbody>().AddForce(70f * this.transform.forward.normalized, ForceMode.Impulse);
             Destroy(firedProjectile, 10);
         }
@@ -107,23 +114,23 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2"))
         {
-            int layerMask = ~(1<< 9 | 1<<10);
+            int layerMask = ~(1 << 9 | 1 << 10 | 1 << 11);
             if (carryingEle)
             {
                 Debug.Log("Dropping ele");
                 animator.SetBool("Carrying", false);
                 ptitEle.GetComponent<Rigidbody>().useGravity = true;
                 ptitEle.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                ptitEle.transform.localPosition = Vector3.forward - Vector3.right ;
+                ptitEle.transform.localPosition = Vector3.forward - Vector3.right;
                 ptitEle.transform.parent = null;
                 //ptitEle.transform.localRotation = Quaternion.identity;
                 //ptitEle.transform.position -= ptitEle.transform.up - 1.5f* this.transform.forward;
                 this.carryingEle = false;
             }
-            else if (Physics.SphereCast(Camera.main.ScreenPointToRay(Input.mousePosition),20f, out RaycastHit hit, Mathf.Infinity, layerMask, QueryTriggerInteraction.UseGlobal))
+            else if (Physics.SphereCast(Camera.main.ScreenPointToRay(Input.mousePosition), 20f, out RaycastHit hit, Mathf.Infinity, layerMask, QueryTriggerInteraction.UseGlobal))
             {
                 GameObject actionCheck = hit.collider.gameObject;
-                Debug.Log(hit.collider.name +" "+ Vector3.Distance(this.transform.position, actionCheck.transform.position));
+                Debug.Log(hit.collider.name + " " + Vector3.Distance(this.transform.position, actionCheck.transform.position));
                 if (Vector3.Distance(this.transform.position, actionCheck.transform.position) < 20f)
                 {
                     if (!carryingEle && actionCheck != null)
@@ -156,16 +163,10 @@ public class Player : MonoBehaviour
             }
         }
     }
-    private void CheckPoint()
-    {
-        if (Input.GetButton("Fire3") && gameManager.lastCheckpoint != null)
-        {
-            this.transform.position = gameManager.lastCheckpoint.position;
-        }
-    }
     private void Death()
     {
-        Debug.Log("U R dead");
-        this.gameObject.SetActive(false);
+        this.transform.position = new Vector3(gameManager.lastCheckpoint.position.x, gameManager.lastCheckpoint.position.y, this.transform.position.z); ;
+
+        //this.life = 1;
     }
 }

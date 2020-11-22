@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5654303388832005354}
   - component: {fileID: 3618737800447777458}
   - component: {fileID: 1575311620809633400}
-  - component: {fileID: 8737430714441955194}
   - component: {fileID: 5447213150676947503}
+  - component: {fileID: 8737430714441955194}
+  - component: {fileID: -399258287659919396}
   m_Layer: 0
   m_Name: Boomerang
   m_TagString: Untagged
@@ -81,6 +82,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &5447213150676947503
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2463962330298342572}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2678922, y: 0.05643344, z: 0.28067517}
+  m_Center: {x: 0.102117114, y: -0.0022702247, z: -0.06304501}
 --- !u!54 &8737430714441955194
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -97,16 +111,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &5447213150676947503
-BoxCollider:
+--- !u!114 &-399258287659919396
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2463962330298342572}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.2678922, y: 0.05643344, z: 0.28067517}
-  m_Center: {x: 0.102117114, y: -0.0022702247, z: -0.06304501}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd380cf4b1b87f43b1c2369a0667870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
