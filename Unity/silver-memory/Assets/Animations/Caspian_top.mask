@@ -7,5 +7,143 @@ AvatarMask:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Caspian_top
-  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-  m_Elements: []
+  m_Mask: 00000000010000000100000000000000000000000100000001000000000000000100000000000000000000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: geo
+    m_Weight: 0
+  - m_Path: geo/Hair
+    m_Weight: 0
+  - m_Path: geo/Face
+    m_Weight: 0
+  - m_Path: geo/Neck
+    m_Weight: 0
+  - m_Path: geo/Jacket
+    m_Weight: 0
+  - m_Path: geo/Shirt
+    m_Weight: 0
+  - m_Path: geo/Arms
+    m_Weight: 0
+  - m_Path: geo/Short
+    m_Weight: 0
+  - m_Path: geo/Legs
+    m_Weight: 0
+  - m_Path: geo/Shoes
+    m_Weight: 0
+  - m_Path: Group
+    m_Weight: 0
+  - m_Path: Group/Main
+    m_Weight: 0
+  - m_Path: Group/Main/DeformationSystem
+    m_Weight: 0
+  - m_Path: Group/Main/DeformationSystem/Root_M
+    m_Weight: 0
+  - m_Path: Group/Main/DeformationSystem/Root_M/Hip_R
+    m_Weight: 0
+  - m_Path: Group/Main/DeformationSystem/Root_M/Hip_R/Knee_R
+    m_Weight: 0
+  - m_Path: Group/Main/DeformationSystem/Root_M/Hip_R/Knee_R/Ankle_R
+    m_Weight: 0
+  - m_Path: Group/Main/DeformationSystem/Root_M/Hip_R/Knee_R/Ankle_R/Toes_R
+    m_Weight: 0
+  - m_Path: Group/Main/DeformationSystem/Root_M/Hip_R/Knee_R/Ankle_R/Toes_R/ToesEnd_R
+    m_Weight: 0
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/ShoulderPart2_R
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/ShoulderPart2_R/Elbow_R
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/ShoulderPart2_R/Elbow_R/Wrist_R
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/ShoulderPart2_R/Elbow_R/Wrist_R/MiddleFinger1_R
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/ShoulderPart2_R/Elbow_R/Wrist_R/MiddleFinger1_R/MiddleFinger2_R
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/ShoulderPart2_R/Elbow_R/Wrist_R/MiddleFinger1_R/MiddleFinger2_R/MiddleFinger3_R
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/ShoulderPart2_R/Elbow_R/Wrist_R/MiddleFinger1_R/MiddleFinger2_R/MiddleFinger3_R/MiddleFinger4_R
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/ShoulderPart2_R/Elbow_R/Wrist_R/ThumbFinger1_R
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/ShoulderPart2_R/Elbow_R/Wrist_R/ThumbFinger1_R/ThumbFinger2_R
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/ShoulderPart2_R/Elbow_R/Wrist_R/ThumbFinger1_R/ThumbFinger2_R/ThumbFinger3_R
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/ShoulderPart2_R/Elbow_R/Wrist_R/ThumbFinger1_R/ThumbFinger2_R/ThumbFinger3_R/ThumbFinger4_R
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/ShoulderPart2_R/Elbow_R/Wrist_R/Hand
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/ShoulderPart2_R/Elbow_R/Wrist_R/Elephant_handler
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck1_M
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck1_M/Head_M
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck1_M/Head_M/Eye_R
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck1_M/Head_M/Eye_R/EyeEnd_R
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck1_M/Head_M/Jaw_M
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck1_M/Head_M/Jaw_M/JawEnd_M
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck1_M/Head_M/HeadEnd_M
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck1_M/Head_M/Eye_L
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck1_M/Head_M/Eye_L/EyeEnd_L
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L/ShoulderPart2_L
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L/ShoulderPart2_L/Elbow_L
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L/ShoulderPart2_L/Elbow_L/Wrist_L
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L/ShoulderPart2_L/Elbow_L/Wrist_L/MiddleFinger1_L
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L/ShoulderPart2_L/Elbow_L/Wrist_L/MiddleFinger1_L/MiddleFinger2_L
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L/ShoulderPart2_L/Elbow_L/Wrist_L/MiddleFinger1_L/MiddleFinger2_L/MiddleFinger3_L
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L/ShoulderPart2_L/Elbow_L/Wrist_L/MiddleFinger1_L/MiddleFinger2_L/MiddleFinger3_L/MiddleFinger4_L
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L/ShoulderPart2_L/Elbow_L/Wrist_L/ThumbFinger1_L
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L/ShoulderPart2_L/Elbow_L/Wrist_L/ThumbFinger1_L/ThumbFinger2_L
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L/ShoulderPart2_L/Elbow_L/Wrist_L/ThumbFinger1_L/ThumbFinger2_L/ThumbFinger3_L
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L/ShoulderPart2_L/Elbow_L/Wrist_L/ThumbFinger1_L/ThumbFinger2_L/ThumbFinger3_L/ThumbFinger4_L
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Spine1_M/Back
+    m_Weight: 1
+  - m_Path: Group/Main/DeformationSystem/Root_M/Hip_L
+    m_Weight: 0
+  - m_Path: Group/Main/DeformationSystem/Root_M/Hip_L/Knee_L
+    m_Weight: 0
+  - m_Path: Group/Main/DeformationSystem/Root_M/Hip_L/Knee_L/Ankle_L
+    m_Weight: 0
+  - m_Path: Group/Main/DeformationSystem/Root_M/Hip_L/Knee_L/Ankle_L/Toes_L
+    m_Weight: 0
+  - m_Path: Group/Main/DeformationSystem/Root_M/Hip_L/Knee_L/Ankle_L/Toes_L/ToesEnd_L
+    m_Weight: 0
+  - m_Path: Group/Main/DeformationSystem/Root_M/World
+    m_Weight: 0
