@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
         if (life <= 0)
         {
             life = 1;
+            gameManager.PlayerDeath();
         }
     }
     private void Moving()
@@ -62,10 +63,6 @@ public class Player : MonoBehaviour
         Vector3 direction = new Vector3(horizontal, 0, 0).normalized;
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = gravity;
-        }
         if (carryingEle)
         {
             speed = normalSpeed / 3;
@@ -90,6 +87,7 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+
             animator.SetBool("Jumping", true);
         }
         else
@@ -167,7 +165,5 @@ public class Player : MonoBehaviour
     private void Death()
     {
         this.transform.position = new Vector3(gameManager.currentCheckpoint.transform.position.x, gameManager.currentCheckpoint.transform.position.y, this.transform.position.z); ;
-        gameManager.PlayerDeath();
-        //this.life = 1;
     }
 }
