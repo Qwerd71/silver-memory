@@ -97,6 +97,7 @@ MonoBehaviour:
   controller: {fileID: 1348005919763265284}
   gameManager: {fileID: 0}
   carryingEle: 0
+  carryingJoint: {fileID: 0}
   normalSpeed: 0
   gravity: -19.62
   normalJump: 0
@@ -180,7 +181,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: b0de7cd74d6dc5645acbbb6f2b825d6e, type: 2}
+      objectReference: {fileID: 9100000, guid: ec3d17106c18fb94c87e42476a428499, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 861f14da1932df7498907f3c9ffdda28, type: 3}
 --- !u!4 &1531132891727955726 stripped
