@@ -84,10 +84,11 @@ public class Playerv2 : MonoBehaviour
 
         isGrounded = IsGrounded();
 
+        rb.velocity = new Vector3(horizontal * speed, rb.velocity.y);
         if (isGrounded)
         {
             if (animator.GetBool("Jumping")) animator.SetBool("Jumping", false);
-            rb.AddForce(new Vector3(horizontal * speed * Time.deltaTime, 0, 0), ForceMode.Impulse);
+            //rb.AddForce(new Vector3(horizontal * speed * Time.deltaTime, 0, 0), ForceMode.Impulse);
             animator.SetBool("Moving", Mathf.Abs(rb.velocity.x) > 0.1f);
             if (Input.GetButtonDown("Jump"))
             {
@@ -196,5 +197,9 @@ public class Playerv2 : MonoBehaviour
         {
             Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), col);
         }
+        /*if (collision.gameObject.layer.Equals(9)) //touche le ground
+        {
+            isGrounded = true;
+        }*/
     }
 }
